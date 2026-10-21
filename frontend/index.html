@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081923"><meta name="description" content="Condições do mar e do tempo em regiões costeiras.">
+  <title>Ocean & Weather — Coastal Monitor</title><link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=mobile-layout-1">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">≈</span><span>ocean<span class="brand-light">watch</span><small>COASTAL INTELLIGENCE</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-link active" href="#overview"><span>◉</span> Visão geral</a>
+      <a class="nav-link" href="#forecast"><span>⌁</span> Previsão marítima</a>
+      <div class="sidebar-bottom"><div class="status-dot"></div><div><strong>Serviços operacionais</strong><small>Open-Meteo conectado</small></div></div>
+    </aside>
+    <main id="overview">
+      <header class="topbar"><div class="breadcrumbs">Monitoramento <span>/</span> <strong>Visão geral</strong></div><div class="top-actions"><span class="live"><i></i> DADOS AO VIVO</span><button id="theme-toggle" class="icon-button" aria-label="Alternar tema" title="Alternar tema">☼</button></div></header>
+      <section class="intro"><div><div class="eyebrow">PAINEL COSTEIRO <span class="eyebrow-line"></span></div><h1>O mar, em perspectiva.</h1><p>Acompanhe as condições meteorológicas e marítimas em tempo real.</p></div><button id="refresh" class="refresh-button"><span>↻</span> Atualizar dados</button></section>
+      <form id="location-search-form" class="location-search" role="search">
+        <div class="search-heading"><label for="location-query"><span class="search-heading-icon">⌖</span>Qual praia você quer consultar?</label><span>PRAIAS</span></div>
+        <div class="location-search-controls">
+          <span class="search-input-icon" aria-hidden="true">⌕</span>
+          <input id="location-query" type="search" placeholder="Digite o nome de uma praia" autocomplete="off" aria-label="Nome da praia ou coordenadas da praia" aria-controls="location-results" aria-expanded="false" aria-describedby="location-search-hint">
+          <button type="submit" id="location-search-button"><span>Buscar</span><span aria-hidden="true">↗</span></button>
+        </div>
+        <small id="location-search-hint">As sugestões mostram praias. Ex.: Copacabana ou as coordenadas da praia.</small>
+        <div id="location-results" class="location-results" role="listbox" aria-label="Resultados de localização" hidden></div>
+      </form>
+      <section class="location-bar"><div class="location-icon">⌖</div><div class="location-copy"><small>LOCALIZAÇÃO MONITORADA</small><strong id="location-name">Praia de Copacabana, Rio de Janeiro, Brasil</strong></div><div class="coordinates" id="coordinates">22.9711° S&nbsp; 43.1822° W</div><div class="updated">ATUALIZADO <strong id="updated-at">—</strong></div></section>
+      <section class="metrics" aria-label="Condições atuais">
+        <article class="metric-card air"><div class="card-top"><span>TEMPERATURA DO AR</span><span class="metric-icon">☀</span></div><div class="metric-value"><span id="air-temp">—</span><sup>°C</sup></div><div class="metric-foot"><span class="metric-dot"></span> Sensação costeira</div><div class="sparkline air-line"><svg viewBox="0 0 260 46" preserveAspectRatio="none"><path d="M0 35 C18 29 24 32 39 23 S64 29 78 17 S104 21 119 13 S143 21 158 12 S184 19 197 8 S225 18 241 7 S254 9 260 3"/></svg></div></article>
+        <article class="metric-card water"><div class="card-top"><span>TEMPERATURA DA ÁGUA</span><span class="metric-icon">♒</span></div><div class="metric-value"><span id="water-temp">—</span><sup>°C</sup></div><div class="metric-foot"><span class="metric-dot"></span> Superfície do mar</div><div class="sparkline water-line"><svg viewBox="0 0 260 46" preserveAspectRatio="none"><path d="M0 31 C17 14 30 40 47 23 S74 32 90 19 S111 31 129 17 S150 27 169 13 S193 27 209 14 S239 20 260 7"/></svg></div></article>
+        <article class="metric-card waves"><div class="card-top"><span>ALTURA DAS ONDAS</span><span class="metric-icon">≋</span></div><div class="metric-value"><span id="wave-height">—</span><sup>m</sup></div><div class="metric-foot"><span class="metric-dot"></span> Ondulação significativa</div><div class="sparkline wave-line"><svg viewBox="0 0 260 46" preserveAspectRatio="none"><path d="M0 34 C20 34 21 16 40 16 S61 34 79 34 S101 9 119 9 S140 31 159 31 S181 15 198 15 S220 37 238 28 S249 23 260 18"/></svg></div></article>
+      </section>
+      <section class="lower-grid" id="forecast"><article class="forecast-panel"><div class="panel-heading"><div><div class="eyebrow">PRÓXIMAS HORAS</div><h2>Ritmo das marés</h2></div><span class="unit-label">PREVISÃO HORÁRIA</span></div><div id="forecast-list" class="forecast-list"><div class="loading">Carregando previsão…</div></div></article>
+        <article class="recommendation-panel"><div class="recommendation-top"><span class="recommendation-icon">✳</span><span class="eyebrow">LEITURA DO MAR</span></div><h2 id="recommendation">Analisando condições</h2><p id="recommendation-detail">Buscando os dados mais recentes para esta região.</p><div class="recommendation-rule"></div><div class="source-note"><span>ⓘ</span> Estimativas de modelo. Confira sempre os avisos e bandeiras locais.</div></article></section>
+      <footer><div>Previsão por <strong>Open-Meteo</strong> · Lugares © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a> via <a href="https://github.com/komoot/photon" target="_blank" rel="noreferrer">Photon</a></div><span>OCEANWATCH <b>·</b> FEITO PARA O MAR</span></footer>
+      <div id="error-message" class="error-message" role="status" hidden></div>
+    </main>
+  </div><script src="app.js?v=beaches-only-1"></script>
+</body></html>
